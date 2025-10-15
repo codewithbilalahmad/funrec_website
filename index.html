@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunRec – Background Audio Recorder 🎙️</title>
+    <style>
+        :root {
+            --primary: #4a6bff;
+            --primary-dark: #3a56d4;
+            --secondary: #ff6b8b;
+            --dark: #333;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 12px;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            font-size: 3rem;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: white;
+            color: var(--primary);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* Screenshots Section */
+        .screenshots-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--light-gray);
+        }
+
+        .screenshots-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .screenshots-container::-webkit-scrollbar-track {
+            background: var(--light-gray);
+            border-radius: 10px;
+        }
+
+        .screenshots-container::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .screenshot {
+            flex: 0 0 auto;
+            width: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Download Section */
+        #download {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+        }
+
+        #download .section-title h2,
+        #download .section-title p {
+            color: white;
+        }
+
+        .app-badge {
+            display: inline-block;
+            margin: 20px 10px;
+            width: 180px;
+        }
+
+        .app-badge img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Privacy Policy Section */
+        .privacy-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .privacy-content h3 {
+            margin: 25px 0 15px;
+            color: var(--primary);
+        }
+
+        .privacy-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .privacy-content p {
+            margin-bottom: 15px;
+        }
+
+        .privacy-content ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            background-color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            background-color: var(--light-gray);
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header {
+                padding: 60px 0 40px;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .privacy-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <span>🎙️</span>
+                <h1>FunRec</h1>
+            </div>
+            <h1>Background Audio Recorder</h1>
+            <p>Capture every sound, idea, or moment — anytime, anywhere. FunRec is a simple, lightweight, and high-quality background audio recorder designed to make recording effortless and reliable.</p>
+            <div class="cta-buttons">
+                <a href="#download" class="btn">Download Now</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>🌟 Key Features</h2>
+                <p>FunRec combines essential recording tools with thoughtful design to help you focus on what truly matters — capturing sound effortlessly.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎙️</div>
+                    <h3>High-Quality Audio Recording</h3>
+                    <p>Record crystal-clear sound using your device's microphone — perfect for voice, music, or ambient recording.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏺️</div>
+                    <h3>Record in the Background</h3>
+                    <p>Keep recording even while using other apps or when your screen is locked — without interruptions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗓️</div>
+                    <h3>Smart Week Calendar</h3>
+                    <p>Quickly find and filter your recordings by date using the built-in week calendar view.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎭🏷️</div>
+                    <h3>Mood Filters</h3>
+                    <p>Organize your recordings by moods and topics — easily group, search, and relive your recordings with a personal touch.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Clean and Intuitive Design</h3>
+                    <p>FunRec features a simple, modern interface that makes recording and managing files effortless and enjoyable.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📂</div>
+                    <h3>Secure File Management</h3>
+                    <p>All recordings are safely stored within the app for easy playback, sharing, and management.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">▶️</div>
+                    <h3>Playback and Control</h3>
+                    <p>Listen to your saved recordings directly in the app with an integrated, minimal player.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast and Lightweight</h3>
+                    <p>Optimized for performance — runs smoothly on all devices without draining your battery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots">
+        <div class="container">
+            <div class="section-title">
+                <h2>App Screenshots</h2>
+                <p>Take a look at FunRec's clean and intuitive interface</p>
+            </div>
+            <div class="screenshots-container">
+                <div class="screenshot">
+                    <img src="https://via.placeholder.com/250x500/4a6bff/ffffff?text=Recording+Screen" alt="FunRec Recording Screen">
+                </div>
+                <div class="screenshot">
+                    <img src="https://via.placeholder.com/250x500/ff6b8b/ffffff?text=Playback+Screen" alt="FunRec Playback Screen">
+                </div>
+                <div class="screenshot">
+                    <img src="https://via.placeholder.com/250x500/6c5ce7/ffffff?text=Calendar+View" alt="FunRec Calendar View">
+                </div>
+                <div class="screenshot">
+                    <img src="https://via.placeholder.com/250x500/00b894/ffffff?text=Mood+Filters" alt="FunRec Mood Filters">
+                </div>
+                <div class="screenshot">
+                    <img src="https://via.placeholder.com/250x500/fdcb6e/333333?text=File+Management" alt="FunRec File Management">
+                </div>
+                <div class="screenshot">
+                    <img src="https://via.placeholder.com/250x500/e17055/ffffff?text=Settings" alt="FunRec Settings">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download">
+        <div class="container">
+            <div class="section-title">
+                <h2>Download FunRec</h2>
+                <p>Get FunRec now and start capturing audio effortlessly</p>
+            </div>
+            <div>
+                <a href="#" class="app-badge">
+                    <img src="https://via.placeholder.com/180x540/ffffff/4a6bff?text=Google+Play" alt="Get FunRec on Google Play">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Section -->
+    <section id="privacy">
+        <div class="container">
+            <div class="section-title">
+                <h2>Privacy Policy</h2>
+                <p>Your privacy is important to us</p>
+            </div>
+            <div class="privacy-content">
+                <h3>Information We Collect</h3>
+                <p>FunRec is designed with your privacy in mind. We collect minimal information necessary for the app to function:</p>
+                <ul>
+                    <li>Audio recordings you create using the app</li>
+                    <li>App usage data for improving functionality</li>
+                    <li>Device information for compatibility purposes</li>
+                </ul>
+                
+                <h3>How We Use Your Information</h3>
+                <p>Your audio recordings are stored locally on your device and are never transmitted to our servers unless you explicitly choose to share them. We do not access, view, or listen to your recordings without your explicit permission.</p>
+                
+                <h3>Data Security</h3>
+                <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                
+                <h3>Third-Party Services</h3>
+                <p>FunRec does not share your data with third parties for marketing purposes. We may use third-party services for analytics and crash reporting, but these services collect only anonymous, aggregated data.</p>
+                
+                <h3>Changes to This Policy</h3>
+                <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "last updated" date.</p>
+                
+                <h3>Contact Us</h3>
+                <p>If you have any questions about this Privacy Policy, please contact us at: privacy@funrec.app</p>
+                
+                <p><em>Last updated: March 15, 2023</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about FunRec</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does background recording work?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>FunRec uses Android's foreground service to continue recording even when the app is in the background or the screen is off. This ensures your recordings continue uninterrupted while you use other apps.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What audio formats does FunRec support?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>FunRec records in high-quality MP3 format by default, balancing audio quality with file size. You can adjust the recording quality in settings to suit your needs.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I share my recordings?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! FunRec makes it easy to share your recordings via email, messaging apps, or cloud storage. Simply select the recording you want to share and use the share button.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do mood filters work?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Mood filters are tags you can assign to your recordings to organize them by context or emotion. For example, you can tag a recording as "Meeting", "Idea", or "Music" for easy filtering later.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is FunRec free to use?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>FunRec is free to download and use with basic features. A premium version with advanced features like cloud backup and unlimited recording time is available as an in-app purchase.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FunRec</h3>
+                    <p>Background Audio Recorder for Android. Capture every sound, idea, or moment — anytime, anywhere.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#screenshots">Screenshots</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="mailto:support@funrec.app">Contact Us</a></li>
+                        <li><a href="#">User Guide</a></li>
+                        <li><a href="#">Troubleshooting</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 FunRec. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                // Close all answers
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.classList.remove('active');
+                });
+                
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.querySelector('span:last-child').textContent = '+';
+                });
+                
+                // If the clicked answer wasn't active, open it
+                if (!isActive) {
+                    answer.classList.add('active');
+                    question.querySelector('span:last-child').textContent = '−';
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
