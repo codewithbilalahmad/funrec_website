@@ -79,7 +79,9 @@
         }
 
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             padding: 12px 28px;
             background-color: white;
             color: var(--primary);
@@ -189,12 +191,18 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            border: 1px solid var(--light-gray);
         }
 
         .screenshot img {
             width: 100%;
             height: auto;
             display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot:hover img {
+            transform: scale(1.03);
         }
 
         /* Download Section */
@@ -210,16 +218,27 @@
         }
 
         .app-badge {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             margin: 20px 10px;
-            width: 180px;
+            padding: 15px 30px;
+            background-color: white;
+            color: var(--primary);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
 
-        .app-badge img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
+        .app-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .app-badge i {
+            font-size: 1.5rem;
         }
 
         /* Privacy Policy Section */
@@ -233,6 +252,9 @@
         .privacy-content h3 {
             margin: 25px 0 15px;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .privacy-content h3:first-child {
@@ -246,6 +268,21 @@
         .privacy-content ul {
             margin-left: 20px;
             margin-bottom: 20px;
+        }
+
+        .permission-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+        }
+
+        .permission-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
         }
 
         /* FAQ Section */
@@ -322,6 +359,22 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             color: #aaa;
             font-size: 0.9rem;
+        }
+
+        /* Image Loading States */
+        .screenshot img {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         /* Responsive Styles */
@@ -469,7 +522,7 @@
             </div>
             <div>
                 <a href="#" class="app-badge">
-                    <img src="https://via.placeholder.com/180x540/ffffff/4a6bff?text=Google+Play" alt="Get FunRec on Google Play">
+                    <img src="https://raw.githubusercontent.com/codewithbilalahmad/funrec_website/refs/heads/main/images/play.png" alt="Get FunRec on Google Play">
                 </a>
             </div>
         </div>
@@ -483,28 +536,54 @@
                 <p>Your privacy is important to us</p>
             </div>
             <div class="privacy-content">
-                <h3>Information We Collect</h3>
-                <p>FunRec is designed with your privacy in mind. We collect minimal information necessary for the app to function:</p>
+                <h3><i class="fas fa-info-circle"></i> Information We Collect</h3>
+                <p>Welcome to Funrec Audio Recorder App. This Privacy Policy explains what information the app accesses, how it is used, and the choices you have.</p>
+                <p>The app is designed to be simple and private. It collects no personal information by default. However, it requires the following permissions to function:</p>
+                
+                <div class="permission-item">
+                    <div class="permission-icon">🎤</div>
+                    <div>
+                        <h4>Microphone Access</h4>
+                        <p>Required to record audio when you start a recording session. Audio is processed locally and never transmitted externally.</p>
+                    </div>
+                </div>
+                
+                <div class="permission-item">
+                    <div class="permission-icon">🔔</div>
+                    <div>
+                        <h4>Foreground Service</h4>
+                        <p>Shows a notification while recording in the background so you're always aware when recording is active and can easily stop it.</p>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-cogs"></i> How We Use Information</h3>
+                <p>We do not collect or share any personal data. The permissions are used only to:</p>
                 <ul>
-                    <li>Audio recordings you create using the app</li>
-                    <li>App usage data for improving functionality</li>
-                    <li>Device information for compatibility purposes</li>
+                    <li>Capture audio from your microphone when you start a recording</li>
+                    <li>Show a persistent notification while recording in the background for transparency and control</li>
+                    <li>Save recordings only inside the app's private file directory (internal storage)</li>
+                    <li>Allow you to manage, playback, and export your recordings at your discretion</li>
                 </ul>
+                <p>Recordings are not stored in public device storage or shared automatically. All audio processing happens locally on your device.</p>
                 
-                <h3>How We Use Your Information</h3>
-                <p>Your audio recordings are stored locally on your device and are never transmitted to our servers unless you explicitly choose to share them. We do not access, view, or listen to your recordings without your explicit permission.</p>
+                <h3><i class="fas fa-share-alt"></i> Sharing & Third-Party Services</h3>
+                <p>The app does not share your recordings or personal data with any third parties. It does not include ads, third-party trackers, analytics, or any external data transmission.</p>
+                <p>Note: If you manually share a recording through your device's share options, the chosen destination app/service will receive the file — this is beyond our control and subject to that service's privacy policy.</p>
                 
-                <h3>Data Security</h3>
-                <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                <h3><i class="fas fa-shield-alt"></i> Data Security</h3>
+                <p>Your recordings remain private in the app's internal storage directory. They are not accessible by other apps unless you explicitly choose to share them.</p>
+                <p>If you uninstall the app, your saved recordings may also be deleted unless you have exported them manually to external storage.</p>
                 
-                <h3>Third-Party Services</h3>
-                <p>FunRec does not share your data with third parties for marketing purposes. We may use third-party services for analytics and crash reporting, but these services collect only anonymous, aggregated data.</p>
+                <h3><i class="fas fa-child"></i> Children's Privacy</h3>
+                <p>The app is for general audiences and does not knowingly collect information from children under 13. If you believe a child under 13 has provided us with personal information, please contact us immediately so we can take appropriate action.</p>
                 
-                <h3>Changes to This Policy</h3>
-                <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "last updated" date.</p>
+                <h3><i class="fas fa-sync-alt"></i> Changes to this Policy</h3>
+                <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. The "Last Updated" date at the bottom of this page will always reflect the latest version.</p>
+                <p>We encourage you to review this policy periodically to stay informed about how we protect your information.</p>
                 
-                <h3>Contact Us</h3>
-                <p>If you have any questions about this Privacy Policy, please contact us at: privacy@funrec.app</p>
+                <h3><i class="fas fa-envelope"></i> Contact Us</h3>
+                <p>If you have any questions, concerns, or suggestions about this Privacy Policy or our privacy practices, please don't hesitate to reach out to us:</p>
+                <p><i class="fas fa-envelope"></i> Email Support: mbilal10388@gmail.com</p>
                 
                 <p><em>Last updated: March 15, 2023</em></p>
             </div>
