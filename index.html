@@ -158,23 +158,46 @@
         }
 
         .play-store-btn {
-            display: flex;
-            align-items: center;
-            background-color: #000;
-            color: white;
-            border-radius: 12px;
-            padding: 12px 24px;
-            text-decoration: none;
-            transition: var(--transition);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            margin: 0 auto;
-        }
+  display: inline-flex;
+  align-items: center;
+  background-color: #000;
+  color: #fff;
+  border-radius: 14px;
+  padding: 10px 22px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  font-family: 'Roboto', sans-serif;
+  gap: 14px; /* 👈 Adds spacing between the image and text */
+}
 
-        .play-store-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-            background-color: #111;
-        }
+.play-store-btn img {
+  width: 42px;
+  height: 42px;
+}
+
+.play-store-btn .btn-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.play-store-btn .small-text {
+  font-size: 12px;
+  opacity: 0.8;
+  letter-spacing: 1px;
+}
+
+.play-store-btn .big-text {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.play-store-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  background-color: #111;
+}
 
         .play-icon {
             font-size: 2rem;
@@ -499,14 +522,14 @@
                     <h1>Funrec</h1>
                 </div>
                 <div class="tagline">Background Audio Recorder</div>
-                <a href="#" class="play-store-btn">
-                   <img src="https://raw.githubusercontent.com/codewithbilalahmad/funrec_website/main/images/play.png"
-     width="50" height="50" alt="Get FunRec on Google Play">
-                    <div class="btn-text">
-                        <span>GET IT ON</span>
-                        <span>Google Play</span>
-                    </div>
-                </a>
+               <a href="#" class="play-store-btn">
+  <img src="https://raw.githubusercontent.com/codewithbilalahmad/funrec_website/main/images/play.png" width ="40" height ="40"  alt="Get FunRec on Google Play">
+  <div class="btn-text">
+    <span class="small-text">GET IT ON</span>
+    <span class="big-text">Google Play</span>
+  </div>
+</a>
+
             </div>
             
             <h1>Capture Every Sound, Anytime, Anywhere</h1>
