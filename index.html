@@ -158,46 +158,46 @@
         }
 
         .play-store-btn {
-  display: inline-flex;
-  align-items: center;
-  background-color: #000;
-  color: #fff;
-  border-radius: 14px;
-  padding: 10px 22px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  font-family: 'Roboto', sans-serif;
-  gap: 14px; /* 👈 Adds spacing between the image and text */
-}
+            display: inline-flex;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            border-radius: 14px;
+            padding: 10px 22px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            font-family: 'Roboto', sans-serif;
+            gap: 14px;
+        }
 
-.play-store-btn img {
-  width: 42px;
-  height: 42px;
-}
+        .play-store-btn img {
+            width: 42px;
+            height: 42px;
+        }
 
-.play-store-btn .btn-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
+        .play-store-btn .btn-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
 
-.play-store-btn .small-text {
-  font-size: 12px;
-  opacity: 0.8;
-  letter-spacing: 1px;
-}
+        .play-store-btn .small-text {
+            font-size: 12px;
+            opacity: 0.8;
+            letter-spacing: 1px;
+        }
 
-.play-store-btn .big-text {
-  font-size: 18px;
-  font-weight: 600;
-}
+        .play-store-btn .big-text {
+            font-size: 18px;
+            font-weight: 600;
+        }
 
-.play-store-btn:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  background-color: #111;
-}
+        .play-store-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background-color: #111;
+        }
 
         .play-icon {
             font-size: 2rem;
@@ -362,12 +362,28 @@
             color: var(--primary);
         }
 
-        /* FAQ Section */
+        /* FAQ Section - IMPROVED */
+        #faq {
+            background-color: #f8faff;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
         .faq-item {
-            margin-bottom: 20px;
+            background-color: white;
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
 
         .faq-question {
@@ -378,19 +394,51 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
+            transition: var(--transition);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .faq-question:hover {
+            background-color: #f9f9f9;
+        }
+
+        .faq-question.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .faq-question span:first-child {
+            flex: 1;
+            padding-right: 15px;
+        }
+
+        .faq-question span:last-child {
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active span:last-child {
+            transform: rotate(45deg);
         }
 
         .faq-answer {
-            background-color: var(--light-gray);
+            background-color: white;
             padding: 0 20px;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.3s ease, padding 0.3s ease;
         }
 
         .faq-answer.active {
             padding: 20px;
             max-height: 500px;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            line-height: 1.6;
+            color: var(--gray);
         }
 
         /* Footer */
@@ -496,6 +544,10 @@
             .privacy-content {
                 padding: 25px;
             }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -522,14 +574,13 @@
                     <h1>Funrec</h1>
                 </div>
                 <div class="tagline">Background Audio Recorder</div>
-               <a href="https://play.google.com/store/apps/details?id=com.muhammad.funRec" class="play-store-btn">
-  <img src="https://raw.githubusercontent.com/codewithbilalahmad/funrec_website/main/images/play.png" width ="40" height ="40"  alt="Get FunRec on Google Play">
-  <div class="btn-text">
-    <span class="small-text">GET IT ON</span>
-    <span class="big-text">Google Play</span>
-  </div>
-</a>
-
+                <a href="https://play.google.com/store/apps/details?id=com.muhammad.funRec" class="play-store-btn">
+                    <img src="https://raw.githubusercontent.com/codewithbilalahmad/funrec_website/main/images/play.png" width="40" height="40" alt="Get FunRec on Google Play">
+                    <div class="btn-text">
+                        <span class="small-text">GET IT ON</span>
+                        <span class="big-text">Google Play</span>
+                    </div>
+                </a>
             </div>
             
             <h1>Capture Every Sound, Anytime, Anywhere</h1>
@@ -585,8 +636,8 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📲</div>
-                 <h3>Share Your Recordings</h3>
-<p>Easily share your recording notes, audio files, or beautifully formatted PDF summaries with anyone, anytime.</p>
+                    <h3>Share Your Recordings</h3>
+                    <p>Easily share your recording notes, audio files, or beautifully formatted PDF summaries with anyone, anytime.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
@@ -594,10 +645,10 @@
                     <p>Optimized for performance — runs smoothly on all devices without draining your battery.</p>
                 </div>
                 <div class="feature-card">
-    <div class="feature-icon">⚙️</div>
-    <h3>Fully Customizable</h3>
-    <p>Customize your recording experience — switch between calendar types, waveform styles, and more to suit your preferences.</p>
-</div>
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Fully Customizable</h3>
+                    <p>Customize your recording experience — switch between calendar types, waveform styles, and more to suit your preferences.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -628,10 +679,10 @@
                 <div class="screenshot">
                     <img src="https://raw.githubusercontent.com/codewithbilalahmad/Funrec_website/refs/heads/main/images/6.png" alt="Funrec Settings">
                 </div>
-                 <div class="screenshot">
+                <div class="screenshot">
                     <img src="https://raw.githubusercontent.com/codewithbilalahmad/Funrec_website/refs/heads/main/images/7.png" alt="Funrec Settings">
                 </div>
-                 <div class="screenshot">
+                <div class="screenshot">
                     <img src="https://raw.githubusercontent.com/codewithbilalahmad/Funrec_website/refs/heads/main/images/8.png" alt="Funrec Settings">
                 </div>
             </div>
@@ -700,128 +751,127 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
-  <section id="faq">
-    <div class="container">
-        <div class="section-title">
-            <h2>Frequently Asked Questions</h2>
-            <p>Find answers to common questions about Funrec</p>
+    <!-- FAQ Section - IMPROVED -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about Funrec</p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does background recording work?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Funrec uses Android's foreground service to continue recording even when the app is minimized or the screen is off — ensuring uninterrupted recording while you multitask.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What audio formats does Funrec support?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Funrec currently records in high-quality MP3 format, offering an excellent balance between audio clarity and file size. More formats will be supported in future updates.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I share my recordings?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! You can instantly share your recordings with friends or apps through email, chat, or cloud storage — all directly from the Funrec app.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do mood filters work?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Mood filters let you tag recordings by context or emotion — like "Work", "Idea", "Calm", or "Energetic" — making it easy to organize and rediscover recordings later.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is Funrec free to use?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Funrec is 100% free — with no ads, subscriptions, or hidden fees. You get the full experience without limitations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I customize Funrec's look or behavior?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! You can choose between different calendar types (week or month view), waveform styles, and other personalization options to make Funrec fit your style.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Where are my recordings stored?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Your recordings are securely stored on your device in the Funrec folder. You have complete control to rename, delete, or back them up anytime.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Does Funrec work offline?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Funrec is fully functional offline. You don't need an internet connection to record, play, or manage your audio files.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does Funrec protect my privacy?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Funrec stores all recordings locally — nothing is uploaded or shared without your consent. Your audio stays private and secure on your device.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I rename or delete my recordings?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can easily rename, delete, or share your recordings from the main list view. This helps you keep your recordings organized.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Will Funrec get more updates?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Definitely! We're continuously enhancing Funrec with exciting new features designed to delight our users — including smarter tools, better customization, and an even smoother recording experience. Stay tuned for what's next!</p>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="faq-list">
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>How does background recording work?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Funrec uses Android’s foreground service to continue recording even when the app is minimized or the screen is off — ensuring uninterrupted recording while you multitask.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>What audio formats does Funrec support?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Funrec currently records in high-quality MP3 format, offering an excellent balance between audio clarity and file size. More formats will be supported in future updates.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Can I share my recordings?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes! You can instantly share your recordings with friends or apps through email, chat, or cloud storage — all directly from the Funrec app.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>How do mood filters work?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Mood filters let you tag recordings by context or emotion — like “Work”, “Idea”, “Calm”, or “Energetic” — making it easy to organize and rediscover recordings later.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Is Funrec free to use?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Funrec is 100% free — with no ads, subscriptions, or hidden fees. You get the full experience without limitations.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Can I customize Funrec’s look or behavior?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Absolutely! You can choose between different calendar types (week or month view), waveform styles, and other personalization options to make Funrec fit your style.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Where are my recordings stored?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Your recordings are securely stored on your device in the Funrec folder. You have complete control to rename, delete, or back them up anytime.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Does Funrec work offline?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes! Funrec is fully functional offline. You don’t need an internet connection to record, play, or manage your audio files.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>How does Funrec protect my privacy?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Funrec stores all recordings locally — nothing is uploaded or shared without your consent. Your audio stays private and secure on your device.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Can I rename or delete my recordings?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes, you can easily rename, delete, or share your recordings from the main list view. This helps you keep your recordings organized.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Will Funrec get more updates?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Definitely! We’re continuously enhancing Funrec with exciting new features designed to delight our users — including smarter tools, better customization, and an even smoother recording experience. Stay tuned for what’s next!</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -848,25 +898,19 @@
     </footer>
 
     <script>
-        // FAQ toggle functionality
+        // FAQ toggle functionality - FIXED VERSION
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const answer = question.nextElementSibling;
                 const isActive = answer.classList.contains('active');
                 
-                // Close all answers
-                document.querySelectorAll('.faq-answer').forEach(ans => {
-                    ans.classList.remove('active');
-                });
-                
-                document.querySelectorAll('.faq-question').forEach(q => {
-                    q.querySelector('span:last-child').textContent = '+';
-                });
-                
-                // If the clicked answer wasn't active, open it
-                if (!isActive) {
+                // Toggle only the clicked FAQ item
+                if (isActive) {
+                    answer.classList.remove('active');
+                    question.classList.remove('active');
+                } else {
                     answer.classList.add('active');
-                    question.querySelector('span:last-child').textContent = '−';
+                    question.classList.add('active');
                 }
             });
         });
