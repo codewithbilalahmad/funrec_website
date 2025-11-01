@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/codewithbilalahmad/Funrec_website/refs/heads/main/images/ic_launcher-playstore.png">
-    <title>Funrec – Best Audio Journal</title>
+    <title>Funrec – Background Audio Recorder 🎙️</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -318,50 +318,6 @@
             transform: scale(1.03);
         }
 
-        /* Privacy Policy Section */
-        .privacy-content {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 40px;
-            box-shadow: var(--shadow);
-        }
-
-        .privacy-content h3 {
-            margin: 25px 0 15px;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .privacy-content h3:first-child {
-            margin-top: 0;
-        }
-
-        .privacy-content p {
-            margin-bottom: 15px;
-        }
-
-        .privacy-content ul {
-            margin-left: 20px;
-            margin-bottom: 20px;
-        }
-
-        .permission-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: var(--light-gray);
-            border-radius: var(--border-radius);
-        }
-
-        .permission-icon {
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-
         /* FAQ Section */
         .faq-item {
             margin-bottom: 20px;
@@ -598,10 +554,11 @@
     <h3>Fully Customizable</h3>
     <p>Customize your recording experience — switch between calendar types, waveform styles, and more to suit your preferences.</p>
 </div>
-                <div class="feature-card">
+                  <div class="feature-card">
                  <div class="feature-icon">🌐</div>
    <h3>Multiple Language Support</h3>
 <p>Enjoy a personalized experience in your preferred language — seamlessly switch between languages and feel right at home wherever you are.</p>
+
 </div>
             </div>
         </div>
@@ -643,68 +600,6 @@
         </div>
     </section>
 
-    <!-- Privacy Policy Section -->
-    <section id="privacy">
-        <div class="container">
-            <div class="section-title">
-                <h2>Privacy Policy</h2>
-                <p>Your privacy is important to us</p>
-            </div>
-            <div class="privacy-content">
-                <h3><i class="fas fa-info-circle"></i> Information We Collect</h3>
-                <p>Welcome to Funrec Audio Journal. This Privacy Policy explains what information the app accesses, how it is used, and the choices you have.</p>
-                <p>The app is designed to be simple and private. It collects no personal information by default. However, it requires the following permissions to function:</p>
-                
-                <div class="permission-item">
-                    <div class="permission-icon">🎤</div>
-                    <div>
-                        <h4>Microphone Access</h4>
-                        <p>Required to record audio when you start a recording session. Audio is processed locally and never transmitted externally.</p>
-                    </div>
-                </div>
-                
-                <div class="permission-item">
-                    <div class="permission-icon">🔔</div>
-                    <div>
-                        <h4>Foreground Service</h4>
-                        <p>Shows a notification while recording in the background so you're always aware when recording is active and can easily stop it.</p>
-                    </div>
-                </div>
-
-                <h3><i class="fas fa-cogs"></i> How We Use Information</h3>
-                <p>We do not collect or share any personal data. The permissions are used only to:</p>
-                <ul>
-                    <li>Capture audio from your microphone when you start a recording</li>
-                    <li>Show a persistent notification while recording in the background for transparency and control</li>
-                    <li>Save recordings only inside the app's private file directory (internal storage)</li>
-                    <li>Allow you to manage, playback, and export your recordings at your discretion</li>
-                </ul>
-                <p>Recordings are not stored in public device storage or shared automatically. All audio processing happens locally on your device.</p>
-                
-                <h3><i class="fas fa-share-alt"></i> Sharing & Third-Party Services</h3>
-                <p>The app does not share your recordings or personal data with any third parties. It does not include ads, third-party trackers, analytics, or any external data transmission.</p>
-                <p>Note: If you manually share a recording through your device's share options, the chosen destination app/service will receive the file — this is beyond our control and subject to that service's privacy policy.</p>
-                
-                <h3><i class="fas fa-shield-alt"></i> Data Security</h3>
-                <p>Your recordings remain private in the app's internal storage directory. They are not accessible by other apps unless you explicitly choose to share them.</p>
-                <p>If you uninstall the app, your saved recordings may also be deleted unless you have exported them manually to external storage.</p>
-                
-                <h3><i class="fas fa-child"></i> Children's Privacy</h3>
-                <p>The app is for general audiences and does not knowingly collect information from children under 13. If you believe a child under 13 has provided us with personal information, please contact us immediately so we can take appropriate action.</p>
-                
-                <h3><i class="fas fa-sync-alt"></i> Changes to this Policy</h3>
-                <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. The "Last Updated" date at the bottom of this page will always reflect the latest version.</p>
-                <p>We encourage you to review this policy periodically to stay informed about how we protect your information.</p>
-                
-                <h3><i class="fas fa-envelope"></i> Contact Us</h3>
-                <p>If you have any questions, concerns, or suggestions about this Privacy Policy or our privacy practices, please don't hesitate to reach out to us:</p>
-                <p><i class="fas fa-envelope"></i> Email Support: mbilal10388@gmail.com</p>
-                
-                <p><em>Last updated: March 15, 2023</em></p>
-            </div>
-        </div>
-    </section>
-
     <!-- FAQ Section -->
   <section id="faq">
     <div class="container">
@@ -720,7 +615,7 @@
                     <span>+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Funrec uses Android’s foreground service to continue recording even when the app is minimized or the screen is off — ensuring uninterrupted recording while you multitask.</p>
+                    <p>Funrec uses Android's foreground service to continue recording even when the app is minimized or the screen is off — ensuring uninterrupted recording while you multitask.</p>
                 </div>
             </div>
 
@@ -750,7 +645,7 @@
                     <span>+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Mood filters let you tag recordings by context or emotion — like “Work”, “Idea”, “Calm”, or “Energetic” — making it easy to organize and rediscover recordings later.</p>
+                    <p>Mood filters let you tag recordings by context or emotion — like "Work", "Idea", "Calm", or "Energetic" — making it easy to organize and rediscover recordings later.</p>
                 </div>
             </div>
 
@@ -766,7 +661,7 @@
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>Can I customize Funrec’s look or behavior?</span>
+                    <span>Can I customize Funrec's look or behavior?</span>
                     <span>+</span>
                 </div>
                 <div class="faq-answer">
@@ -790,7 +685,7 @@
                     <span>+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Yes! Funrec is fully functional offline. You don’t need an internet connection to record, play, or manage your audio files.</p>
+                    <p>Yes! Funrec is fully functional offline. You don't need an internet connection to record, play, or manage your audio files.</p>
                 </div>
             </div>
 
@@ -806,11 +701,11 @@
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>Can I rename or delete my recordings?</span>
+                    <span>Can I edit or delete my recordings?</span>
                     <span>+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Yes, you can easily rename, delete, or share your recordings from the main list view. This helps you keep your recordings organized.</p>
+                    <p>Yes, you can easily edit, delete, or share your recordings from the main list view. This helps you keep your recordings organized.</p>
                 </div>
             </div>
 
@@ -820,13 +715,12 @@
                     <span>+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Definitely! We’re continuously enhancing Funrec with exciting new features designed to delight our users — including smarter tools, better customization, and an even smoother recording experience. Stay tuned for what’s next!</p>
+                    <p>Definitely! We're continuously enhancing Funrec with exciting new features designed to delight our users — including smarter tools, better customization, and an even smoother recording experience. Stay tuned for what's next!</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 
     <!-- Footer -->
     <footer>
@@ -841,7 +735,7 @@
                     <ul>
                         <li><a href="#features">Features</a></li>
                         <li><a href="#screenshots">Screenshots</a></li>
-                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="https://codewithbilalahmad.github.io/funrec-privacy-policy/" target="_blank">Privacy Policy</a></li>
                         <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
